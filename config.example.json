@@ -1,0 +1,6 @@
+{
+  "target": "oc_8b74cd8d532d5eec8626569e1af4f003",
+  "team": "日本",
+  "interval": 60,
+  "cache": "cache/odds_cache.json"
+}
