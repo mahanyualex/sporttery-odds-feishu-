@@ -15,6 +15,14 @@ Typical use cases:
 - check the odds of a team's match at fixed times every day
 - wrap China Sports Lottery football odds lookup into a reusable automation tool
 
+## Prerequisites
+
+Before installing this project, install and configure `lark-cli` first:
+
+- GitHub: <https://github.com/larksuite/cli>
+
+This project uses `lark-cli` as the Feishu message delivery channel. Without `lark-cli`, Feishu notifications will not work.
+
 ## Features
 
 - Official data source: uses the structured API behind the China Sports Lottery football pages
