@@ -76,7 +76,11 @@ pip install -r requirements.txt
 
 ### 3. 安装并登录 lark-cli
 
-如果你还没有安装 `lark-cli`，先安装它，并确保命令可直接执行：
+本项目依赖 `lark-cli` 发送飞书消息，因此请先安装并配置 `lark-cli`：
+
+- GitHub：<https://github.com/larksuite/cli>
+
+如果你还没有安装 `lark-cli`，请先完成它的安装，并确保命令可直接执行：
 
 ```bash
 lark-cli version

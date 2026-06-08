@@ -77,6 +77,10 @@ pip install -r requirements.txt
 
 ### 3. Install and log in to lark-cli
 
+This project depends on `lark-cli` for Feishu message delivery, so install and configure `lark-cli` first:
+
+- GitHub: <https://github.com/larksuite/cli>
+
 First make sure `lark-cli` is available:
 
 ```bash
