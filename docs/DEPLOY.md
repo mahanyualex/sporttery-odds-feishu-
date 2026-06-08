@@ -1,22 +1,30 @@
 # 部署说明
 
-本文档说明如何把 `sporttery-odds-feishu` 部署为长期运行的本地工具。
+> 适用于准备长期运行 `sporttery-odds-feishu` 的用户。
+
+[返回中文 README](../README.md) · [安装文档](./INSTALL.md) · [英文部署文档](./DEPLOY.en.md)
+
+## 部署方式概览
+
+本项目支持两种常见运行方式：
+- 手动执行命令，适合临时查询或调试
+- 用 macOS `launchctl` 长期运行，适合定时推送和常驻使用
 
 ## 一、手动运行
 
-### 1. 单次查询
+### 单次查询
 
 ```bash
 python -m odds_tool.main fetch --team 加拿大
 ```
 
-### 2. 监控指定球队赔率变化
+### 监控指定球队赔率变化
 
 ```bash
 python -m odds_tool.main watch-team --team 加拿大 --interval 60 --target oc_xxx
 ```
 
-### 3. 定时推送
+### 定时推送
 
 ```bash
 python -m odds_tool.main scheduled-send --team 日本 --target oc_demo
@@ -30,7 +38,7 @@ python -m odds_tool.main scheduled-send --team 日本 --target oc_demo
 
 ## 二、macOS launchctl 部署
 
-推荐让 `launchctl` 每小时触发一次，由程序内部判断是否到点发送。
+推荐方式：让 `launchctl` 每小时触发一次，由程序内部判断当前小时是否属于发送窗口。
 
 ### 1. 生成 LaunchAgent 文件
 
@@ -70,13 +78,13 @@ tail -f logs/sporttery-football-odds.out.log logs/sporttery-football-odds.err.lo
 log stream --predicate 'process == "python" OR eventMessage CONTAINS "com.herry.sporttery-football-odds"' --style compact
 ```
 
-### 6. 卸载
+### 6. 卸载服务
 
 ```bash
 launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.herry.sporttery-football-odds.plist
 ```
 
-## 三、修改定时推送时间
+## 修改定时推送时间
 
 修改文件：
 
@@ -90,7 +98,7 @@ odds_tool/main.py
 SCHEDULED_SEND_HOURS_BEIJING = [8, 21]
 ```
 
-例如改成：
+例如：
 
 ```python
 SCHEDULED_SEND_HOURS_BEIJING = [9, 18, 22]

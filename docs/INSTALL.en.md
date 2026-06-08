@@ -1,8 +1,20 @@
 # Installation Guide
 
-This document explains how to install `sporttery-odds-feishu` on a local machine.
+> For first-time users of `sporttery-odds-feishu`.
 
-## 1. Get the project
+[Back to English README](../README.en.md) · [Chinese install guide](./INSTALL.md) · [Deployment Guide](./DEPLOY.en.md)
+
+## Before You Install
+
+Prepare the following first:
+- Python 3.11+
+- `lark-cli` because this project depends on it for Feishu message delivery
+- a Feishu account that has completed login and authorization
+
+`lark-cli` repository:
+- <https://github.com/larksuite/cli>
+
+## Step 1: Get the project
 
 ```bash
 git clone <your-repo-url> sporttery-odds-feishu
@@ -15,20 +27,20 @@ If you are using the existing local directory on the current machine, the path e
 cd /Users/mac/Projects/sporttery-odds-feishu
 ```
 
-## 2. Create a Python virtual environment
+## Step 2: Create a Python virtual environment
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## 3. Install dependencies
+## Step 3: Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 4. Install and log in to lark-cli
+## Step 4: Install and log in to lark-cli
 
 This project depends on `lark-cli` for Feishu message delivery, so install and configure `lark-cli` first:
 
@@ -52,7 +64,7 @@ If sending messages later fails because of missing permissions:
 lark-cli auth login --scope "im:message.send_as_user"
 ```
 
-## 5. Get the target Feishu group chat_id
+## Step 5: Get the target Feishu group chat_id
 
 ```bash
 lark-cli im +chat-list
@@ -64,7 +76,7 @@ or:
 lark-cli im +chat-search --name "your group name"
 ```
 
-## 6. Verify the installation
+## Step 6: Verify the installation
 
 Show CLI help:
 
@@ -78,7 +90,7 @@ Run tests:
 python -m pytest tests -q
 ```
 
-## 7. First query examples
+## First query examples
 
 Query by team name:
 

@@ -1,8 +1,16 @@
 # Deployment Guide
 
-This document explains how to deploy `sporttery-odds-feishu` as a long-running local tool.
+> For users who want to run `sporttery-odds-feishu` long-term.
 
-## 1. Run manually
+[Back to English README](../README.en.md) · [Install Guide](./INSTALL.en.md) · [中文部署文档](./DEPLOY.md)
+
+## Deployment Options
+
+This project supports two common run modes:
+- run commands manually for ad-hoc query or debugging
+- use macOS `launchctl` for long-running scheduled delivery
+
+## 1. Run Manually
 
 ### One-off query
 
@@ -23,10 +31,10 @@ python -m odds_tool.main scheduled-send --team Japan --target oc_demo
 ```
 
 Notes:
-- The default send windows are Beijing time `08:00` and `21:00`
-- The schedule is controlled by `SCHEDULED_SEND_HOURS_BEIJING`
-- Only whole-hour windows are supported
-- The tool uses a 24-hour clock
+- the default send windows are Beijing time `08:00` and `21:00`
+- the schedule is controlled by `SCHEDULED_SEND_HOURS_BEIJING`
+- only whole-hour windows are supported
+- the tool uses a 24-hour clock
 
 ## 2. Deploy with macOS launchctl
 
@@ -76,7 +84,7 @@ log stream --predicate 'process == "python" OR eventMessage CONTAINS "com.herry.
 launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.herry.sporttery-football-odds.plist
 ```
 
-## 3. Change scheduled send times
+## Change Scheduled Send Times
 
 Modify this file:
 
@@ -90,7 +98,7 @@ Edit this constant:
 SCHEDULED_SEND_HOURS_BEIJING = [8, 21]
 ```
 
-For example:
+Example:
 
 ```python
 SCHEDULED_SEND_HOURS_BEIJING = [9, 18, 22]
